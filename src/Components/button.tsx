@@ -1,10 +1,15 @@
-import { ButtonProps } from "../Types/Data";
+type ButtonProps = {
+  name: string;
+  className?: string;
+}
 
-export const Button = (buttonProps: ButtonProps) => {
-  const { text, height, width } = buttonProps;
+export const Button = ({ name, className = "", ...props }: ButtonProps) => {
   return (
-    <button style={{ width: `${width}px`, height: `${height}px` }}>
-      {text}
+    <button
+      className={` py-[0.5rem] bg-[#202022] rounded-md  text-white font-bold border-black border ${className}`}
+      {...props}
+    >
+      {name}
     </button>
   );
 };

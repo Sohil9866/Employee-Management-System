@@ -1,11 +1,10 @@
-import { Button } from "./Components/button";
-import { ButtonProps } from "./Types/Data";
+import Access from "./pages/Ascess"
 
 function App() {
-  const buttonProps: ButtonProps = {
-    text:"Submit",height: 50, width: 200,
-  }
-  return <Button {...buttonProps}/> 
+  return (
+    <>
+    <Access/>
+    </>
+  )
 }
-
 export default App;
