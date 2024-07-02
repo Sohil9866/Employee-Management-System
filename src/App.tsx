@@ -1,9 +1,9 @@
-import Access from "./pages/Ascess"
+import Login from "./Components/input";
 
 function App() {
   return (
     <>
-    <Access/>
+    <Login/>
     </>
   )
 }

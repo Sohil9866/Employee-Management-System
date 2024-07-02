@@ -6,7 +6,7 @@ type ButtonProps = {
 export const Button = ({ name, className = "", ...props }: ButtonProps) => {
   return (
     <button
-      className={` py-[0.5rem] bg-[#202022] rounded-md  text-white font-bold border-black border ${className}`}
+      className={` py-[0.5rem] bg-[#00CEB0] rounded-md text-white font-bold w-full ${className}`}
       {...props}
     >
       {name}

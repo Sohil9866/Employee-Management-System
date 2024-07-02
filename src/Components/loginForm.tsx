@@ -1,37 +1,45 @@
 import { Button } from "./button";
+import { NavLink } from "react-router-dom";
 import Input from "./input";
+import { useFormik } from "formik";
 
 const LoginForm = () => {
+  const initialValue = {
+    email: "",
+    password: ""
+  }
+
+  const {values, initialValues, handleChange, handleSubmit, handleBlur} = useFormik({
+      initialValues: initialValue,
+    onSubmit: values => {
+        console.log(values);
+    }
+  });
   return (
-    <div className="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
+    <div className=" absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-1/3 flex-col px-6 py-6 lg:px-8">
       <div className="sm:mx-auto sm:w-full sm:max-w-sm">
-        <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
-          Employee Login
+        <h2 className="mt-3 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
+          Log in
         </h2>
       </div>
 
       <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-        <form className="space-y-6" action="#" method="POST">
-          <Input label="Email" name="email" type="email"/>
-          <Input label="Password" name="password" type="password"/>
+        <form className="space-y-6" onSubmit={handleSubmit}>
+          <Input label="Email" name="email" type="email"  onChange={handleChange} onBlur={handleBlur}/>
+          <Input label="Password" name="password" type="password" />
           <div>
-            <button
-              type="submit"
-              className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-            >
-              Sign in
-            </button>
+           <Button name="Signin"/>
           </div>
         </form>
 
-        <p className="mt-10 text-center text-sm text-gray-500">
+        <p className="mt-6 text-center text-sm text-gray-500">
           Not a member?
-          <a
-            href="#"
-            className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500"
+          <NavLink
+            to={"/signup"}
+            className="leading-6 text-indigo-600 hover:text-indigo-500"
           >
             SignUp
-          </a>
+          </NavLink>
         </p>
       </div>
     </div>
