@@ -1,14 +1,15 @@
-import React, { HtmlHTMLAttributes, useId, forwardRef } from "react";
+import React, {  useId, forwardRef } from "react";
 
 type InputProps = {
   label: string;
   className?: string;
   name: string;
   type: string;
-} & HtmlHTMLAttributes<HTMLInputElement>;
+  err?: null |string;
+} & React.InputHTMLAttributes<HTMLInputElement>;
 
-const Input = forwardRef<HTMLInputElement, InputProps>(
-  ({ name, value, label, type, className = "", ...props }, ref) => {
+const Input = React.forwardRef<HTMLInputElement, InputProps>(
+  ({ name, label, type, err, className = "", ...props }, ref) => {
     const id = useId();
     return (
       <>
@@ -28,10 +29,13 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
               name={name}
               id={id}
               ref={ref as React.Ref<HTMLInputElement>}  
-              value={value}
               {...props}
             />
           </div>
+          {err !== null ?
+          (<div className="flex items-center text-red-500 text-xs">
+            <span className="text-red-500">{err}</span>
+          </div>) : ("")}
         </div>
       </>
     );
